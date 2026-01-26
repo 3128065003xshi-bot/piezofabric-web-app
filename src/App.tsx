@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Login from "./components/Login";
 import Summary from "./components/Summary";
-import Monitoring from "./components/Monitoring";
+import Monitoring from "./components/Monitoring"; 
 import Settings from "./components/Settings";
 
 interface Profile {
@@ -21,6 +21,7 @@ const App: React.FC = () => {
     weight: 70,
     height: 175,
   });
+
 
   // Load from localStorage on mount
   useEffect(() => {
