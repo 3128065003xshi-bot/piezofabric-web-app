@@ -11,6 +11,7 @@ const Monitoring: React.FC<MonitoringProps> = ({ isConnected, setIsConnected }) 
       <h2>Monitoring</h2>
       <p>Live BP reading will appear here when connected.</p>
       <button
+        onClick={() => setIsConnected(!isConnected)}
         style={{
           padding: "18px 40px",
           background: isConnected ? "#28a745" : "#0066cc",
@@ -20,11 +21,10 @@ const Monitoring: React.FC<MonitoringProps> = ({ isConnected, setIsConnected }) 
           fontSize: "1.3rem",
           margin: "20px 0",
         }}
-        onClick={() => setIsConnected(!isConnected)}
       >
         {isConnected ? "Disconnect Socks" : "Connect Socks"}
       </button>
-      {isConnected && <p style={{ color: "#28a745", fontWeight: "bold" }}>Connected! Data loading...</p>}
+      {isConnected && <p style={{ color: "#28a745", fontWeight: "bold" }}>Connected! Mock data loading...</p>}
     </div>
   );
 };
