@@ -1,40 +1,48 @@
-import { useEffect, useState } from "react";
-import type { Schema } from "../amplify/data/resource";
-import { generateClient } from "aws-amplify/data";
+import React, { useState } from "react";
+import Login from "./components/Login";
+import "./index.css"; // Keep your global styles
 
-const client = generateClient<Schema>();
+const App: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [activeTab, setActiveTab] = useState("summary");
 
-function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
-
-  useEffect(() => {
-    client.models.Todo.observeQuery().subscribe({
-      next: (data) => setTodos([...data.items]),
-    });
-  }, []);
-
-  function createTodo() {
-    client.models.Todo.create({ content: window.prompt("Todo content") });
+  if (!isLoggedIn) {
+    return <Login onLoginSuccess={() => setIsLoggedIn(true)} />;
   }
 
   return (
-    <main>
-      <h1>My todos</h1>
-      <button onClick={createTodo}>+ new</button>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
-        ))}
-      </ul>
-      <div>
-        🥳 App successfully hosted. Try creating a new todo.
-        <br />
-        <a href="https://docs.amplify.aws/react/start/quickstart/#make-frontend-updates">
-          Review next step of this tutorial.
-        </a>
-      </div>
-    </main>
+    <div className="app">
+      {/* Main app content - Summary tab as example (expand later) */}
+      <header>
+        <h1>Smart BP Socks</h1>
+      </header>
+
+      <main>
+        {activeTab === "summary" && (
+          <div>
+            <h2>Summary</h2>
+            <p>Welcome! Your BP history will appear here.</p>
+            {/* Add charts, averages later */}
+          </div>
+        )}
+        {activeTab === "monitoring" && <div><h2>Monitoring</h2><p>Live reading screen coming soon</p></div>}
+        {activeTab === "settings" && <div><h2>Settings</h2><p>User profile & preferences</p></div>}
+      </main>
+
+      {/* Bottom Tab Bar */}
+      <nav className="bottom-tab-bar">
+        <button onClick={() => setActiveTab("summary")} className={activeTab === "summary" ? "active" : ""}>
+          Summary
+        </button>
+        <button onClick={() => setActiveTab("monitoring")} className={activeTab === "monitoring" ? "active" : ""}>
+          Monitor
+        </button>
+        <button onClick={() => setActiveTab("settings")} className={activeTab === "settings" ? "active" : ""}>
+          Settings
+        </button>
+      </nav>
+    </div>
   );
-}
+};
 
 export default App;
