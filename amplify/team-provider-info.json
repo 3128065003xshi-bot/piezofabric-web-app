@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-piezofabric-dev-a25c3-authRole",
+      "UnauthRoleArn": "arn:aws:iam::328065812660:role/amplify-piezofabric-dev-a25c3-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::328065812660:role/amplify-piezofabric-dev-a25c3-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-piezofabric-dev-a25c3-deployment",
+      "UnauthRoleName": "amplify-piezofabric-dev-a25c3-unauthRole",
+      "StackName": "amplify-piezofabric-dev-a25c3",
+      "StackId": "arn:aws:cloudformation:us-east-1:328065812660:stack/amplify-piezofabric-dev-a25c3/a71aeae0-ff49-11f0-820c-0e78702dcab1",
+      "AmplifyAppId": "d29gxl76yzo6q2"
+    },
+    "categories": {
+      "auth": {
+        "piezofabric74377801": {}
+      },
+      "api": {
+        "piezofabric": {}
+      }
+    }
+  }
+}

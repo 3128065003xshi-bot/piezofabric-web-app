@@ -1,0 +1,17 @@
+type UserProfile @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  age: Int
+  weight: Int
+  height: Int
+  highSystolic: Int
+  highDiastolic: Int
+  enableAlerts: Boolean
+}
+
+type BPReading @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  systolic: Int!
+  diastolic: Int!
+  heartRate: Int!
+  timestamp: AWSDateTime!
+}
