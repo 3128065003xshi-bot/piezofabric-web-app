@@ -8,7 +8,7 @@ frontend:
       commands:
         - npm run build
   artifacts:
-    baseDirectory: dist   # Vite builds to "dist" folder
+    baseDirectory: dist   # Vite outputs production files here
     files:
       - '**/*'
   cache:

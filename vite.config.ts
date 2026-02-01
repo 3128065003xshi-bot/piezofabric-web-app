@@ -1,7 +1,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+
+
 export default defineConfig({
+  // ...
+  resolve: {
+    alias: {
+      "./aws-exports.js": "./aws-exports.js",
+    },
+  },
+
   plugins: [react()],
-  base: '/',   // ← This is critical for Amplify SPA routing
+  base: '/',   // ← Add this line if missing
 })

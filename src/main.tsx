@@ -2,24 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+import { Amplify } from "aws-amplify";
 
-import { Amplify } from 'aws-amplify';
-const awsExports = require('./aws-exports.js') as any;
+// Dynamic import for ESM compatibility
+const awsExports = await import("./aws-exports.js");
 
-Amplify.configure(awsExports);
-
-Amplify.configure(awsExports);
-
-// Remove or comment these lines (Amplify backend not set up yet)
-// import { Amplify } from "aws-amplify";
-// import outputs from "../amplify_outputs.json";
-// Amplify.configure(outputs);
-
+Amplify.configure(awsExports.default || awsExports); // .default handles some export variations
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
-
-
